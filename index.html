@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Florence Chalut-Natal — Psychologue Clinicienne</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --orange:#C8581C; --orange-hover:#A8450F;
+  --orange-pale:#FEF3EA; --orange-light:#FADDBD; --orange-mid:#F0C09A;
+  --creme:#FDFAF6; --beige:#F5EEE3;
+  --text:#2B1A0C; --text-mid:#6B4020; --text-muted:#A07850;
+  --border:rgba(200,88,28,0.12); --border-mid:rgba(200,88,28,0.22);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--creme);color:var(--text);font-size:18px;line-height:1.75;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(253,250,246,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-mid)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--text)}
+.nav-logo em{font-style:italic;color:var(--orange)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:0.95rem;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-rdv{font-size:0.95rem;font-weight:600;padding:0.6rem 1.6rem;background:var(--orange);color:white;border-radius:100px;text-decoration:none;transition:background 0.2s}
+.nav-rdv:hover{background:var(--orange-hover)}
+
+/* HERO — centré, petite photo ronde à côté du nom */
+.hero{min-height:100vh;padding-top:4.5rem;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border-mid);background:var(--creme)}
+.hero-photo-col{display:none}
+.hero-photo-overlay{display:none}
+.hero-content-col{display:flex;align-items:center;justify-content:center;padding:5rem 4rem;width:100%}
+.hero-inner{display:flex;flex-direction:column;align-items:center;gap:2rem;max-width:680px;text-align:center}
+.hero-identity{display:flex;align-items:center;gap:1.2rem;justify-content:center}
+.hero-avatar{width:72px;height:72px;border-radius:50%;overflow:hidden;border:3px solid var(--orange-light);flex-shrink:0}
+.hero-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:sepia(15%) contrast(1.05)}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.85rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange)}
+.hero-tag::before,.hero-tag::after{content:'';display:block;width:24px;height:1.5px;background:var(--orange-mid)}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:600;line-height:1.06;color:var(--text)}
+.hero-h1 em{font-style:italic;color:var(--orange)}
+.hero-quote{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;font-style:italic;color:var(--text-mid);line-height:1.7;padding:1rem 1.5rem;border-left:2px solid var(--orange-light);text-align:left;max-width:560px}
+.hero-modes{display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center}
+.hero-mode-pill{display:flex;align-items:center;gap:0.5rem;background:var(--orange-pale);border:1px solid var(--orange-light);border-radius:100px;padding:0.55rem 1.2rem;font-size:0.92rem;font-weight:500;color:var(--text-mid)}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center}
+.btn-primary{font-size:0.95rem;font-weight:600;padding:0.9rem 2.2rem;border-radius:100px;background:var(--orange);color:white;text-decoration:none;transition:background 0.2s}
+.btn-primary:hover{background:var(--orange-hover)}
+.btn-secondary{font-size:0.92rem;font-weight:500;color:var(--text-muted);text-decoration:none;display:flex;align-items:center;gap:0.3rem;transition:color 0.2s}
+.btn-secondary::after{content:'→'}
+.btn-secondary:hover{color:var(--orange)}
+
+/* SECTIONS */
+section{border-top:1px solid var(--border)}
+.section-inner{max-width:1100px;margin:0 auto;padding:5.5rem 4rem}
+.eyebrow{font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem}
+.eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--orange-mid)}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:600;line-height:1.15;color:var(--text)}
+h2 em{font-style:italic;color:var(--orange)}
+
+/* RÉTABLISSEMENT */
+.retablissement .section-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.retab-text p{font-size:1.05rem;color:var(--text-muted);line-height:1.9;margin-top:1.5rem}
+.retab-pillars{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.pillar{display:flex;align-items:flex-start;gap:1rem;background:var(--beige);border-radius:10px;padding:1.3rem 1.5rem}
+.pillar-icon{width:40px;height:40px;flex-shrink:0;background:var(--orange-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.pillar-body h4{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:0.25rem}
+.pillar-body p{font-size:0.92rem;color:var(--text-muted);line-height:1.65}
+
+/* APPROCHES */
+.approches{background:var(--beige)}
+.approches-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3rem}
+.approches-intro p{font-size:1.02rem;color:var(--text-muted);line-height:1.85}
+.approches-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.approche-card{background:white;border-radius:12px;padding:1.8rem;border:1px solid var(--border);transition:transform 0.2s,border-color 0.2s}
+.approche-card:hover{transform:translateY(-3px);border-color:var(--orange-mid)}
+.approche-num{font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:0.7rem}
+.approche-card h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--text);margin-bottom:0.6rem;line-height:1.25}
+.approche-card p{font-size:0.92rem;color:var(--text-muted);line-height:1.75}
+.approche-tag{display:inline-block;margin-top:0.9rem;font-size:0.75rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--orange);background:var(--orange-pale);border-radius:100px;padding:0.25rem 0.8rem}
+.tcc-encart{margin-top:2rem;background:var(--orange);border-radius:12px;padding:2.2rem 2.8rem;display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:start}
+.tcc-encart-icon{font-size:2rem;margin-top:0.2rem}
+.tcc-encart p{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;font-weight:400;color:rgba(255,255,255,0.92);line-height:1.7}
+
+/* ACCOMPAGNEMENTS SPÉCIFIQUES */
+.specifiques{background:white}
+.specifiques-header{margin-bottom:3rem}
+.specifiques-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.spec-card{background:var(--orange-pale);border-radius:16px;padding:2.8rem;border:1px solid var(--orange-light)}
+.spec-card-eyebrow{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.4rem}
+.spec-card-eyebrow::before{content:'';display:block;width:16px;height:1.5px;background:var(--orange-mid)}
+.spec-card h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--text);line-height:1.1;margin-bottom:1rem}
+.spec-card h3 em{font-style:italic;color:var(--orange)}
+.spec-desc{font-size:0.95rem;color:var(--text-muted);line-height:1.85;margin-bottom:1.8rem;padding-bottom:1.5rem;border-bottom:1px solid var(--orange-light)}
+.spec-plan-label{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid);margin-bottom:0.9rem}
+.spec-steps{display:flex;flex-direction:column;gap:0.7rem}
+.spec-step{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.1rem;background:white;border-radius:10px}
+.spec-step-n{width:28px;height:28px;flex-shrink:0;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;color:white}
+.spec-step-body h4{font-size:0.95rem;font-weight:600;color:var(--text);margin-bottom:0.15rem}
+.spec-step-body p{font-size:0.88rem;color:var(--text-muted);line-height:1.6}
+.spec-warning{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.3rem;font-size:0.85rem;font-weight:700;color:var(--orange);background:white;border:1.5px solid var(--orange-light);border-radius:8px;padding:0.55rem 1rem}
+
+/* CONTACT */
+.contact{background:var(--orange-pale)}
+.contact .section-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-left p{font-size:1rem;color:var(--text-muted);line-height:1.85;margin-top:1.2rem;margin-bottom:2rem}
+.contact-infos{display:flex;flex-direction:column}
+.contact-row{display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--border)}
+.contact-row:first-child{border-top:1px solid var(--border)}
+.contact-key{font-size:0.78rem;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--orange);min-width:68px;padding-top:2px}
+.contact-val{font-size:0.98rem;color:var(--text-mid);line-height:1.5}
+.contact-right{display:flex;flex-direction:column;gap:1.5rem}
+.doctolib-banner{display:flex;align-items:center;gap:1.2rem;padding:1.5rem 1.8rem;background:white;border:1.5px solid var(--orange-light);border-radius:12px;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s}
+.doctolib-banner:hover{border-color:var(--orange);box-shadow:0 4px 16px rgba(200,88,28,0.12)}
+.doctolib-logo-box{width:52px;height:52px;border-radius:10px;background:#0596DE;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.doctolib-logo-box svg{width:30px;height:30px}
+.doctolib-txt strong{display:block;font-size:1rem;font-weight:600;color:var(--text);margin-bottom:0.15rem}
+.doctolib-txt span{font-size:0.9rem;color:var(--text-muted)}
+.doctolib-arrow{margin-left:auto;font-size:1.2rem;color:var(--orange)}
+.horaires-box{background:white;border-radius:12px;padding:1.6rem}
+.horaires-title{font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem}
+.horaires-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.2rem 1.5rem}
+.horaire-row{display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;color:var(--text-mid)}
+.horaire-row span:last-child{font-weight:600;color:var(--orange)}
+
+/* MAP */
+.map-wrap{border-top:1px solid var(--border)}
+.map-frame{background:var(--beige);height:380px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
+.map-frame::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--orange-mid) 1px,transparent 1px),linear-gradient(90deg,var(--orange-mid) 1px,transparent 1px);background-size:40px 40px;opacity:0.22}
+.map-frame::after{content:'';position:absolute;top:50%;left:0;right:0;height:8px;transform:translateY(-50%);background:rgba(255,255,255,0.6)}
+.map-pin{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.5rem}
+.map-pin-dot{width:38px;height:38px;background:var(--orange);border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(200,88,28,0.3)}
+.map-pin-dot::after{content:'';display:block;width:13px;height:13px;background:white;border-radius:50%;transform:rotate(45deg)}
+.map-chip{position:relative;z-index:2;background:white;border:1px solid var(--border-mid);border-radius:8px;padding:0.6rem 1rem;font-size:0.9rem;color:var(--text-mid);text-align:center;line-height:1.5}
+.map-note{position:absolute;bottom:0.8rem;left:0.8rem;z-index:2;font-size:0.72rem;color:var(--text-muted);background:rgba(253,250,246,0.85);padding:0.2rem 0.5rem;border-radius:4px}
+
+/* FOOTER */
+footer{background:var(--beige);border-top:1px solid var(--border-mid);padding:1.8rem 4rem;display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:var(--text-muted)}
+footer a{color:var(--text-muted);text-decoration:none}
+footer a:hover{color:var(--orange)}
+.footer-links{display:flex;gap:2rem}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .hero-content-col{padding:3rem 2rem}
+}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .section-inner{padding:3.5rem 1.5rem}
+  .retablissement .section-inner,.approches-intro,.contact .section-inner{grid-template-columns:1fr;gap:2.5rem}
+  .approches-grid{grid-template-columns:1fr 1fr}
+  .specifiques-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+}
+@media(max-width:580px){
+  .approches-grid{grid-template-columns:1fr}
+  .horaires-grid{grid-template-columns:1fr}
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero-inner>*{animation:fadeUp 0.65s ease both}
+.hero-inner>*:nth-child(1){animation-delay:.1s}
+.hero-inner>*:nth-child(2){animation-delay:.2s}
+.hero-inner>*:nth-child(3){animation-delay:.3s}
+.hero-inner>*:nth-child(4){animation-delay:.38s}
+.hero-inner>*:nth-child(5){animation-delay:.46s}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Florence <em>Chalut-Natal</em></div>
+  <ul class="nav-links">
+    <li><a href="#approches">Accompagnement</a></li>
+    <li><a href="#specifiques">TSA &amp; TDAH</a></li>
+    <li><a href="parcours.html" target="_blank">Parcours</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://www.doctolib.fr" target="_blank" class="nav-rdv">Prendre RDV</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content-col">
+    <div class="hero-inner">
+      <div class="hero-identity">
+        <div class="hero-avatar">
+          <img src="fchalutnatal.png" alt="Florence Chalut-Natal">
+        </div>
+        <div class="hero-tag">Psychologue clinicienne · Fontainebleau</div>
+      </div>
+      <h1 class="hero-h1">Le rétablissement<br>est un <em>chemin</em>,<br>pas une destination.</h1>
+      <p class="hero-quote">Apprendre à mieux se connaître, reconnaître ses troubles et les accepter — ce sont les clés pour retrouver confiance, estime de soi et liberté d'agir.</p>
+      <div class="hero-modes">
+        <div class="hero-mode-pill">🏥 En cabinet à Fontainebleau</div>
+        <div class="hero-mode-pill">💻 En ligne par visioconférence</div>
+      </div>
+      <div class="hero-actions">
+        <a href="https://www.doctolib.fr" target="_blank" class="btn-primary">Réserver sur Doctolib</a>
+        <a href="#approches" class="btn-secondary">Mon accompagnement</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉTABLISSEMENT -->
+<section class="retablissement">
+  <div class="section-inner">
+    <div class="retab-text">
+      <div class="eyebrow">Ma philosophie</div>
+      <h2>Vers un <em>équilibre</em><br>retrouvé</h2>
+      <p>Mon rôle est de vous accompagner dans l'identification et l'utilisation de vos forces, de travailler sur vos vulnérabilités pour retrouver progressivement confiance et estime de soi — deux moteurs indispensables au rétablissement.</p>
+    </div>
+    <div class="retab-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🌅</div>
+        <div class="pillar-body">
+          <h4>Restaurer l'espoir</h4>
+          <p>Retrouver un sens à sa vie et se projeter vers un avenir meilleur.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🧭</div>
+        <div class="pillar-body">
+          <h4>Favoriser l'auto-détermination</h4>
+          <p>Prendre ses propres décisions, régler ses problèmes et s'occuper de son avenir.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🤝</div>
+        <div class="pillar-body">
+          <h4>Promouvoir l'inclusion sociale</h4>
+          <p>Retrouver une identité positive et s'engager dans la vie sociale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROCHES -->
+<section class="approches" id="approches">
+  <div class="section-inner">
+    <div class="approches-intro">
+      <div>
+        <div class="eyebrow">Mon cadre thérapeutique</div>
+        <h2>Des approches <em>reconnues</em><br>&amp; adaptées</h2>
+      </div>
+      <p>Chaque trouble psychique se manifeste différemment. Mon accompagnement s'appuie sur des méthodes validées scientifiquement, construites autour de votre singularité et de vos besoins réels.</p>
+    </div>
+    <div class="approches-grid">
+      <div class="approche-card">
+        <div class="approche-num">01</div>
+        <h3>Psychoéducation</h3>
+        <p>Des outils pratiques pour mieux comprendre la maladie, gérer les émotions et renforcer la résilience au quotidien.</p>
+        <span class="approche-tag">Outils pratiques</span>
+      </div>
+      <div class="approche-card">
+        <div class="approche-num">02</div>
+        <h3>Thérapie TCC</h3>
+        <p>Les thérapies cognitivo-comportementales, reconnues pour leur efficacité dans la gestion des troubles anxieux et de l'humeur.</p>
+        <span class="approche-tag">TCC</span>
+      </div>
+      <div class="approche-card">
+        <div class="approche-num">03</div>
+        <h3>Réhabilitation psychosociale</h3>
+        <p>Surmonter les difficultés sociales, professionnelles ou personnelles en réacquérant les compétences essentielles.</p>
+        <span class="approche-tag">Vie sociale &amp; pro</span>
+      </div>
+      <div class="approche-card">
+        <div class="approche-num">04</div>
+        <h3>Réduire l'auto-stigmatisation</h3>
+        <p>Déconstruire les préjugés liés au diagnostic pour se percevoir comme un individu complet, avec ses forces et fragilités.</p>
+        <span class="approche-tag">Acceptation de soi</span>
+      </div>
+      <div class="approche-card">
+        <div class="approche-num">05</div>
+        <h3>Conduites addictives</h3>
+        <p>La TCC a prouvé son efficacité pour mettre fin aux comportements addictifs grâce à une meilleure gestion émotionnelle.</p>
+        <span class="approche-tag">TCC · Addiction</span>
+      </div>
+      <div class="approche-card">
+        <div class="approche-num">06</div>
+        <h3>Soutien des proches</h3>
+        <p>Des séances d'éducation thérapeutique pour aider votre entourage à mieux comprendre votre état et vos besoins.</p>
+        <span class="approche-tag">Famille &amp; entourage</span>
+      </div>
+    </div>
+    <div class="tcc-encart">
+      <div class="tcc-encart-icon">💬</div>
+      <p>La TCC est une thérapie brève qui vise à remplacer les idées négatives et les comportements inadaptés par des pensées et réactions en adéquation avec la réalité — en travaillant sur les émotions, les pensées et les comportements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TSA + TDAH -->
+<section class="specifiques" id="specifiques">
+  <div class="section-inner">
+    <div class="specifiques-header">
+      <div class="eyebrow">Accompagnements spécifiques</div>
+      <h2>TSA &amp; <em>TDAH</em></h2>
+    </div>
+    <div class="specifiques-grid">
+      <div class="spec-card">
+        <div class="spec-card-eyebrow">Autisme</div>
+        <h3>Trouble du Spectre<br>de l'Autisme <em>SDI</em></h3>
+        <p class="spec-desc">Le TSA est un trouble du neurodéveloppement reconnu comme handicap, présent depuis la naissance. Lorsque le fonctionnement cognitif n'est pas atteint, on parle de TSA Sans Trouble du Développement Intellectuel selon les classifications DSM-5 &amp; CIM-11.</p>
+        <div class="spec-plan-label">Mon plan thérapeutique</div>
+        <div class="spec-steps">
+          <div class="spec-step">
+            <div class="spec-step-n">1</div>
+            <div class="spec-step-body">
+              <h4>Communication &amp; interactions</h4>
+              <p>Séances individuelles ou en groupe pour travailler les habiletés sociales.</p>
+            </div>
+          </div>
+          <div class="spec-step">
+            <div class="spec-step-n">2</div>
+            <div class="spec-step-body">
+              <h4>Améliorer son fonctionnement</h4>
+              <p>Établissement d'un profil sensoriel pour un Programme d'Accompagnement Sensoriel Personnalisé.</p>
+            </div>
+          </div>
+          <div class="spec-step">
+            <div class="spec-step-n">3</div>
+            <div class="spec-step-body">
+              <h4>Comprendre son TSA</h4>
+              <p>Psychoéducation spécifique et orientations vers les professionnels compétents.</p>
+            </div>
+          </div>
+        </div>
+        <div class="spec-warning">⚠️ Je n'effectue pas de pré-diagnostic</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-card-eyebrow">Neurodéveloppement</div>
+        <h3>Trouble du Déficit<br>de l'Attention <em>TDAH</em></h3>
+        <p class="spec-desc">Le TDAH est un trouble neurodéveloppemental caractérisé par des difficultés d'attention, d'impulsivité et/ou d'hyperactivité. Il peut persister à l'âge adulte et impacter la vie quotidienne, scolaire et professionnelle.</p>
+        <div class="spec-plan-label">Mon plan thérapeutique</div>
+        <div class="spec-steps">
+          <div class="spec-step">
+            <div class="spec-step-n">1</div>
+            <div class="spec-step-body">
+              <h4>Psychoéducation du TDAH</h4>
+              <p>Comprendre son fonctionnement pour mieux gérer l'attention, l'impulsivité et l'organisation au quotidien.</p>
+            </div>
+          </div>
+          <div class="spec-step">
+            <div class="spec-step-n">2</div>
+            <div class="spec-step-body">
+              <h4>Stratégies cognitivo-comportementales</h4>
+              <p>Mise en place d'outils concrets via la TCC pour améliorer la régulation émotionnelle et les comportements.</p>
+            </div>
+          </div>
+          <div class="spec-step">
+            <div class="spec-step-n">3</div>
+            <div class="spec-step-body">
+              <h4>Renforcer l'estime de soi</h4>
+              <p>Travailler sur l'image de soi souvent fragilisée, et valoriser les ressources propres à chaque personne.</p>
+            </div>
+          </div>
+        </div>
+        <div class="spec-warning">⚠️ Je n'effectue pas de pré-diagnostic</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-left">
+      <div class="eyebrow">Contact</div>
+      <h2>Prenons <em>rendez-vous</em></h2>
+      <p>La première séance est un moment d'échange pour faire connaissance et évaluer ensemble comment nous pouvons travailler. Elle dure 50 minutes, en cabinet ou en ligne.</p>
+      <div class="contact-infos">
+        <div class="contact-row"><span class="contact-key">Adresse</span><span class="contact-val">À renseigner · Fontainebleau</span></div>
+        <div class="contact-row"><span class="contact-key">Tél.</span><span class="contact-val">À renseigner</span></div>
+        <div class="contact-row"><span class="contact-key">Email</span><span class="contact-val">À renseigner</span></div>
+        <div class="contact-row"><span class="contact-key">Tarif</span><span class="contact-val">À renseigner · Remboursement mutuelle partiel</span></div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="eyebrow">Prise de rendez-vous</div>
+      <a href="https://www.doctolib.fr" target="_blank" class="doctolib-banner">
+        <div class="doctolib-logo-box">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#0596DE"/>
+            <path d="M8 8h8c5.523 0 10 4.477 10 10s-4.477 10-10 10H8V8z" fill="white"/>
+            <path d="M12 12h4a6 6 0 0 1 0 12h-4V12z" fill="#0596DE"/>
+          </svg>
+        </div>
+        <div class="doctolib-txt">
+          <strong>Réserver sur Doctolib</strong>
+          <span>Disponibilités &amp; prise de RDV en ligne</span>
+        </div>
+        <span class="doctolib-arrow">→</span>
+      </a>
+      <div class="horaires-box">
+        <div class="horaires-title">Horaires du cabinet</div>
+        <div class="horaires-grid">
+          <div class="horaire-row"><span>Lundi</span><span>9h – 20h</span></div>
+          <div class="horaire-row"><span>Mardi</span><span>9h – 20h</span></div>
+          <div class="horaire-row"><span>Mercredi</span><span>9h – 20h</span></div>
+          <div class="horaire-row"><span>Jeudi</span><span>9h – 20h</span></div>
+          <div class="horaire-row"><span>Vendredi</span><span>9h – 20h</span></div>
+          <div class="horaire-row"><span>Samedi</span><span>9h – 13h</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map-wrap">
+    <div class="map-frame">
+      <div class="map-pin"><div class="map-pin-dot"></div></div>
+      <div class="map-chip">📍 Adresse à renseigner · Fontainebleau (77)</div>
+      <div class="map-note">Carte interactive — adresse à définir</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Florence Chalut-Natal — Psychologue clinicienne · ADELI n° à renseigner</span>
+  <div class="footer-links">
+    <a href="parcours.html" target="_blank">Mon parcours</a>
+    <a href="#">Mentions légales</a>
+    <a href="#">Confidentialité</a>
+  </div>
+</footer>
+
+</body>
+</html>

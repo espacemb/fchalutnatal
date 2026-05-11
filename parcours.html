@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Parcours — Florence Chalut-Natal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --orange:#C8581C; --orange-hover:#A8450F;
+  --orange-pale:#FEF3EA; --orange-light:#FADDBD; --orange-mid:#F0C09A;
+  --creme:#FDFAF6; --beige:#F5EEE3;
+  --text:#2B1A0C; --text-mid:#6B4020; --text-muted:#A07850;
+  --border:rgba(200,88,28,0.12); --border-mid:rgba(200,88,28,0.22);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--creme);color:var(--text);font-size:18px;line-height:1.75}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(253,250,246,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-mid)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--text);text-decoration:none}
+.nav-logo em{font-style:italic;color:var(--orange)}
+.nav-back{font-size:0.95rem;font-weight:500;color:var(--text-muted);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+.nav-back::before{content:'←'}
+.nav-back:hover{color:var(--orange)}
+.nav-rdv{font-size:0.95rem;font-weight:600;padding:0.6rem 1.6rem;background:var(--orange);color:white;border-radius:100px;text-decoration:none;transition:background 0.2s}
+.nav-rdv:hover{background:var(--orange-hover)}
+
+/* HERO PARCOURS — photo + texte côte à côte */
+.hero-parcours{display:grid;grid-template-columns:340px 1fr;min-height:420px;border-bottom:1px solid var(--border-mid)}
+.hero-photo{overflow:hidden;background:var(--beige)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:sepia(15%) contrast(1.05)}
+.hero-text{background:var(--orange);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.hero-eyebrow{font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.hero-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:rgba(255,255,255,0.35)}
+.hero-parcours h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4.5vw,4rem);font-weight:600;color:white;line-height:1.08;margin-bottom:1.5rem}
+.hero-parcours h1 em{font-style:italic;opacity:0.82}
+.hero-parcours p{font-size:1.05rem;color:rgba(255,255,255,0.72);max-width:500px;line-height:1.8;font-weight:300}
+
+/* CONTENU */
+.page-inner{max-width:860px;margin:0 auto;padding:5rem 4rem}
+
+.eyebrow{font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:0.5rem;margin-bottom:0.8rem}
+.eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--orange-mid)}
+
+/* DIPLÔME */
+.diplome-card{background:var(--orange-pale);border:1px solid var(--orange-light);border-radius:16px;padding:2.8rem;margin-bottom:5rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center}
+.diplome-icon{width:70px;height:70px;background:var(--orange);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
+.diplome-body h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--text);line-height:1.15;margin-bottom:0.6rem}
+.diplome-body h2 em{font-style:italic;color:var(--orange)}
+.diplome-body p{font-size:1rem;color:var(--text-muted);line-height:1.65}
+.diplome-badge{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1rem;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--orange);background:white;border:1px solid var(--orange-light);border-radius:100px;padding:0.35rem 0.9rem}
+
+/* EXPÉRIENCES — timeline épurée */
+.exp-section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--text);margin-bottom:2.5rem;line-height:1.2}
+.exp-section-title em{font-style:italic;color:var(--orange)}
+
+.timeline{display:flex;flex-direction:column;gap:0;position:relative}
+.timeline::before{content:'';position:absolute;left:15px;top:8px;bottom:0;width:1.5px;background:var(--orange-light)}
+
+.tl-item{display:grid;grid-template-columns:46px 1fr;gap:1.5rem;position:relative}
+.tl-dot{width:30px;height:30px;background:var(--creme);border:2px solid var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;margin-top:0.2rem}
+.tl-dot-inner{width:10px;height:10px;background:var(--orange);border-radius:50%}
+.tl-body{padding:0.1rem 0 2.5rem}
+.tl-body h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:0.3rem;line-height:1.2}
+.tl-body .tl-org{font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem}
+.tl-body p{font-size:0.98rem;color:var(--text-muted);line-height:1.75}
+
+/* FOOTER */
+footer{background:var(--beige);border-top:1px solid var(--border-mid);padding:1.8rem 4rem;display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:var(--text-muted)}
+footer a{color:var(--text-muted);text-decoration:none}
+footer a:hover{color:var(--orange)}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  nav{padding:1rem 1.5rem}
+  .hero-parcours{grid-template-columns:1fr}
+  .hero-photo{height:300px}
+  .hero-text{padding:3rem 1.5rem}
+  .page-inner{padding:3rem 1.5rem}
+  .diplome-card{grid-template-columns:1fr;gap:1rem}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero-text>*{animation:fadeUp 0.6s ease both}
+.hero-text>*:nth-child(1){animation-delay:.05s}
+.hero-text>*:nth-child(2){animation-delay:.15s}
+.hero-text>*:nth-child(3){animation-delay:.25s}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="florence-chalut-natal.html" class="nav-logo">Florence <em>Chalut-Natal</em></a>
+  <a href="florence-chalut-natal.html" class="nav-back">Retour au site</a>
+  <a href="https://www.doctolib.fr" target="_blank" class="nav-rdv">Prendre RDV</a>
+</nav>
+
+<!-- HERO avec photo -->
+<div class="hero-parcours">
+  <div class="hero-photo">
+    <img src="fchalutnatal.png" alt="Florence Chalut-Natal, psychologue clinicienne">
+  </div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">Expérience &amp; formation</div>
+    <h1>Un parcours ancré<br><em>dans le terrain</em></h1>
+    <p>Plus de 20 ans d'expérience clinique auprès de publics variés, en structures médico-sociales, psychiatriques et en cabinet libéral.</p>
+  </div>
+</div>
+
+<!-- CONTENU -->
+<div class="page-inner">
+
+  <div class="eyebrow">Formation</div>
+  <div class="diplome-card">
+    <div class="diplome-icon">🎓</div>
+    <div class="diplome-body">
+      <h2>DESS (Master 2)<br><em>Psychologie Clinique et Pathologique</em></h2>
+      <p>Psychologue clinicienne diplômée d'état, titulaire d'un Master 2 de Psychologie Clinique et Pathologique obtenu en 2005 à l'Université Paris 7.</p>
+      <span class="diplome-badge">🏛 Université Paris 7 — 2005</span>
+    </div>
+  </div>
+
+  <div class="eyebrow">Expériences pratiques</div>
+  <p class="exp-section-title">Un engagement <em>de terrain</em><br>auprès de publics variés</p>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-body">
+        <div class="tl-org">SAMSAH</div>
+        <h3>Service d'Accompagnement Médico-Social pour Adultes Handicapés</h3>
+        <p>Accompagnement de personnes adultes en situation de handicap psychique dans leur vie quotidienne, sociale et professionnelle.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-body">
+        <div class="tl-org">IME</div>
+        <h3>Institut Médico-Éducatif</h3>
+        <p>Accompagnement d'enfants présentant des troubles du spectre autistique, en lien avec les équipes pluridisciplinaires et les familles.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-body">
+        <div class="tl-org">SAVS</div>
+        <h3>Service d'Accompagnement à la Vie Sociale</h3>
+        <p>Accompagnement sur toutes les problématiques liées à la vie en logement de droit commun : autonomie, insertion, gestion du quotidien.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-body">
+        <div class="tl-org">ESAT</div>
+        <h3>Foyer d'hébergement pour travailleurs</h3>
+        <p>Soutien psychologique des résidents en foyer d'hébergement travaillant en Établissement et Service d'Aide par le Travail.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-body">
+        <div class="tl-org">Habitat Inclusif</div>
+        <h3>Animation de la vie collective &amp; pair-aidance</h3>
+        <p>Animation de la vie collective et mise en place de la pair-aidance dans des dispositifs d'habitat inclusif pour personnes en situation de handicap.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-body">
+        <div class="tl-org">CRP</div>
+        <h3>Centre de Réadaptation Professionnelle</h3>
+        <p>Accompagnement des personnes dans l'évaluation de leur projet professionnel et/ou de formation après un accident de vie ou une maladie.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-body">
+        <div class="tl-org">Clinique psychiatrique</div>
+        <h3>Animation de groupes thérapeutiques</h3>
+        <p>Animation de groupes dans le cadre de l'hospitalisation complète et de l'hôpital de jour, en lien avec les équipes soignantes.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span>© 2025 Florence Chalut-Natal — Psychologue clinicienne</span>
+  <a href="florence-chalut-natal.html">← Retour au site</a>
+</footer>
+
+</body>
+</html>
