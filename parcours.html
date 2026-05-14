@@ -8,7 +8,7 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --orange:#C8581C; --orange-hover:#A8450F;
+  --orange:#d99023; --orange-hover:#A8450F;
   --orange-pale:#FEF3EA; --orange-light:#FADDBD; --orange-mid:#F0C09A;
   --creme:#FDFAF6; --beige:#F5EEE3;
   --text:#2B1A0C; --text-mid:#6B4020; --text-muted:#A07850;
@@ -19,8 +19,8 @@ body{font-family:'Nunito',sans-serif;background:var(--creme);color:var(--text);f
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(253,250,246,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-mid)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--text);text-decoration:none}
-.nav-logo em{font-style:italic;color:var(--orange)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;color:var(--text);text-decoration:none}
+.nav-logo em{font-style:normal;color:var(--orange)}
 .nav-back{font-size:0.95rem;font-weight:500;color:var(--text-muted);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
 .nav-back::before{content:'←'}
 .nav-back:hover{color:var(--orange)}
@@ -57,11 +57,11 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .exp-section-title em{font-style:italic;color:var(--orange)}
 
 .timeline{display:flex;flex-direction:column;gap:0;position:relative}
-.timeline::before{content:'';position:absolute;left:15px;top:8px;bottom:0;width:1.5px;background:var(--orange-light)}
+.timeline::before{display:none}
 
-.tl-item{display:grid;grid-template-columns:46px 1fr;gap:1.5rem;position:relative}
-.tl-dot{width:30px;height:30px;background:var(--creme);border:2px solid var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;margin-top:0.2rem}
-.tl-dot-inner{width:10px;height:10px;background:var(--orange);border-radius:50%}
+.tl-item{display:block;position:relative}
+.tl-dot{display:none}
+.tl-dot-inner{display:none}
 .tl-body{padding:0.1rem 0 2.5rem}
 .tl-body h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:0.3rem;line-height:1.2}
 .tl-body .tl-org{font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem}
